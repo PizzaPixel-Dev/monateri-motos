@@ -8,8 +8,11 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/hero.css">
+    <link rel="stylesheet" href="css/cards.css">
     <title>Monateri Motos</title>
     <script src="https://cdn.tailwindcss.com"></script>
+
 </head>
 <body>
     <header>
@@ -31,11 +34,14 @@
             <img src="assets/img/hero.jpg" alt="Imagen de motociclista">
             <div class="first-overlay"></div>
             <div class="second-overlay"></div>
+            <h1 class="hero-title">
+                ENTRÁS CAMINANDO...<br> <span class="title-dest">Y TE VAS EN DOS RUEDAS</span>
+            </h1>
         </div>
     </section>
-    <section id="motos">
+    <div class="motosTrack" id="motosTrack"></div>
 
-    </section>
+
     <section id="beneficios">
 
     </section>
@@ -46,6 +52,7 @@
         <div class="footer up"></div>
         <div class="footer down"></div>
     </footer>
-
+    <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+    <script src="js/cards.js"></script>
 </body>
 </html>

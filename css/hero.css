@@ -1,0 +1,67 @@
+.hero {
+    position: relative;
+    inset: 0;
+    height: 100vh;
+}
+
+.hero-img {
+    z-index: 1;
+    object-fit: cover;
+    height: 100%;
+}
+
+.hero-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.first-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        to right,
+        rgba(30, 30, 30, 0.95),
+        rgba(30, 30, 30, 0.70),
+        transparent
+    );
+    z-index: 2;
+}
+
+.second-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        to top,
+        rgba(30, 30, 30, 0.80),
+        transparent,
+        rgba(30, 30, 30, 0.40)
+    );
+    z-index: 3;
+}
+
+.hero-title {
+    font-family: "Work Sans", Arial, Helvetica, sans-serif;
+    position: absolute;
+    top: 130px;
+    left: 30px;
+    right: 600px;
+    font-size: 80px;
+    font-weight: 600;
+    z-index: 4;
+    color: #fafafa;
+    transform: translateX(-800px);
+    animation: heroEnter 0.8s ease-out forwards;
+}
+
+@keyframes heroEnter {
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.title-dest {
+    color: #fa2525;
+}
