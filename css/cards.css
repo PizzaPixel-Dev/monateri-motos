@@ -1,6 +1,8 @@
 .motos-track {
     display: flex;
+    flex-direction: row;
     gap: 24px;
+    width: 100%;
 }
 
 .moto-card {
@@ -47,6 +49,11 @@
 }
 
 .moto-year {
+    font-size: 0.9rem;
+    color: #94a3b8;
+}
+
+.moto-motor {
     font-size: 0.9rem;
     color: #94a3b8;
 }

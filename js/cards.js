@@ -34,6 +34,7 @@ function createMotoCard(moto) {
         <div class="moto-info">
             <h3>${moto.brand} ${moto.model}</h3>
             ${moto.year ? `<p class="moto-year">${moto.year}</p>` : ""}
+            ${moto.motor ? `<p class="moto-motor">${moto.motor} cc.</p>` : ""}
             <p class="moto-price">$${moto.price.toLocaleString()}</p>
         </div>
         </article>
