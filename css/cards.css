@@ -1,13 +1,59 @@
+.motos-carousel-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 10px 0 10px;
+}
+
+.carousel-btn {
+    background: rgba(0,0,0,0.6);
+    color: #fff;
+    border: none;
+    font-size: 2rem;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    cursor: pointer;
+    position: absolute;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.3s ease;
+}
+
+.carousel-btn:hover {
+    background: rgba(0,0,0,0.85);
+}
+
+.carousel-btn.prev {
+    left: 10px;
+}
+
+.carousel-btn.next {
+    right: 10px;
+}
+
+
+.motos-carousel {
+    max-width: calc(300px * 3 + 24px * 2);
+    overflow: hidden;
+    margin: 0 auto;
+}
+
+
 .motosTrack {
     display: flex;
-    flex-direction: row;
     gap: 24px;
-    width: 100%;
+    transition: transform 0.4s ease;
 }
 
 .moto-card {
     margin-top: 20px;
-    width: 300px;
+    width: 100%;
+    min-width: 260px;
+    max-width: 300px;
     background: #fafafa;
     border-radius: 16px;
     overflow: hidden;
@@ -72,3 +118,14 @@
 }
 
 
+@media (max-width:768px) {
+    .motos-carousel {
+        max-width: calc(300px * 2 + 24px * 1);
+    }
+}
+
+@media (max-width:360px) {
+    .motos-carousel {
+        width: 300px;
+    }
+}

@@ -1,11 +1,14 @@
 (() => {
 const SUPABASE_URL = "https://tnbfqakvotmgqbrjhmus.supabase.co";
 const SUPABASE_KEY = "sb_publishable_Db5fiANKUMFWJIA3AhH5bQ_PgXZylG6";
-
+const motosTrack = document.getElementById("motosTrack");
 const supabase = window.supabase.createClient(
     SUPABASE_URL,
     SUPABASE_KEY
 );
+const prevBtn = document.querySelector(".carousel-btn.prev");
+const nextBtn = document.querySelector(".carousel-btn.next");
+let currentIndex = 0;
 
 async function getMotos() {
     const { data, error } = await supabase
@@ -21,8 +24,6 @@ async function getMotos() {
 
     return data;
 }
-
-const motosTrack = document.getElementById("motosTrack");
 
 function createMotoCard(moto) {
     return `
@@ -41,6 +42,44 @@ function createMotoCard(moto) {
         `;
 }
 
+function getStep() {
+    const width = window.innerWidth;
+
+    if (width >= 900) return 3;
+    if (width >= 600) return 2;
+    return 1;
+}
+
+function updateCarousel() {
+    const card = document.querySelector(".moto-card");
+    if (!card) return;
+
+    const cardWidth = card.offsetWidth + 24;
+    const translateX = -(currentIndex * cardWidth);
+
+    motosTrack.style.transform = `translateX(${translateX}px)`;
+}
+
+nextBtn.addEventListener("click", () => {
+    const step = getStep();
+    const totalCards = document.querySelectorAll(".moto-card").length;
+
+    const maxIndex = totalCards - 1;
+
+    currentIndex = Math.min(currentIndex + step, maxIndex);
+    updateCarousel();
+});
+
+prevBtn.addEventListener("click", () => {
+    const step = getStep();
+    currentIndex = Math.max(currentIndex - step, 0);
+    updateCarousel();
+});
+
+window.addEventListener("resize", () => {
+    currentIndex = 0;
+    updateCarousel();
+});
 
 async function renderMotos() {
     const motos = await getMotos();
@@ -54,6 +93,4 @@ async function renderMotos() {
 }
 
 renderMotos();
-
-
 })();
