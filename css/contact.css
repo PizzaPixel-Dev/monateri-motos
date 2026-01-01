@@ -80,3 +80,9 @@
     background: #ef4444; 
 }
 
+@media (max-width: 768px) {
+    .field {
+        justify-self: center;
+        width: 85%;
+    }
+}

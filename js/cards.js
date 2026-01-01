@@ -33,7 +33,8 @@ function createMotoCard(moto) {
         </div>
 
         <div class="moto-info">
-            <h3>${moto.brand} ${moto.model}</h3>
+            <h6>${moto.brand}</h6>
+            <h3>${moto.model}</h3>
             ${moto.year ? `<p class="moto-year">${moto.year}</p>` : ""}
             ${moto.motor ? `<p class="moto-motor">${moto.motor} cc.</p>` : ""}
             <p class="moto-price">$${moto.price.toLocaleString()}</p>
@@ -58,6 +59,7 @@ function updateCarousel() {
     const translateX = -(currentIndex * cardWidth);
 
     motosTrack.style.transform = `translateX(${translateX}px)`;
+    updateArrows();
 }
 
 nextBtn.addEventListener("click", () => {
@@ -92,5 +94,17 @@ async function renderMotos() {
 
 }
 
-renderMotos();
+function updateArrows() {
+    const totalCards = document.querySelectorAll(".moto-card").length;
+
+    prevBtn.classList.toggle("hidden", currentIndex === 0);
+    nextBtn.classList.toggle(
+        "hidden",
+        currentIndex >= totalCards - 1
+    );
+}
+
+
+renderMotos().then(() => {
+    updateArrows();});
 })();

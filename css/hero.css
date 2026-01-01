@@ -1,7 +1,9 @@
 .hero {
+    font-family: "Work Sans", Arial, Helvetica, sans-serif;
     position: relative;
     inset: 0;
     height: 100vh;
+    overflow: hidden;
 }
 
 .hero-img {
@@ -41,13 +43,17 @@
     z-index: 3;
 }
 
-.hero-title {
-    font-family: "Work Sans", Arial, Helvetica, sans-serif;
+.title {
     position: absolute;
-    top: 130px;
-    left: 30px;
-    right: 500px;
-    font-size: 80px;
+    top: 120px;
+    left: 10px;
+    right: 10px;
+    display: flex;
+    flex-shrink: 0;
+}
+
+.hero-title {
+    font-size: 5rem;
     font-weight: 600;
     z-index: 4;
     color: #fafafa;
@@ -65,4 +71,99 @@
 .title-dest {
     font-style: italic;
     color: #fa2525;
+}
+
+.hero-info {
+    color: #fafafa;
+    z-index: 25;
+    transform: translateX(800px);
+    animation: infoEnter 0.8s ease-out forwards;
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    gap: 50px;
+    justify-content: center;
+    align-items: center;
+}
+
+@keyframes infoEnter {
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.btn-header {
+    align-self: flex-end;
+}
+
+@media (max-width: 768px) {
+
+    .hero {
+        height: 100vh;
+    }
+
+    .first-overlay {
+        background: linear-gradient(
+            to top,
+            transparent,
+            rgba(20, 20, 20, 0.85),
+            rgba(20, 20, 20, 0.4)
+            
+        );
+    }
+
+    .title {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        padding: 90px 20px 40px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 45px;
+    }
+
+    .hero-title {
+        font-size: 3rem;
+        line-height: 1.1;
+        text-align: left;
+        transform: none;
+        transition: none;
+    }
+
+    .hero-info {
+        width: 100%;
+        gap: 20px;
+        align-items: flex-start;
+        transform: none;
+        transition: none;
+    }
+
+    .hero-info p {
+        font-size: 1.5rem;
+        line-height: 1.5;
+        max-width: 90%;
+    }
+
+    .btn-header {
+        align-self: flex-start;
+    }
+}
+
+@media (max-width: 420px) {
+
+    .hero-title {
+        font-size: 2rem;
+    }
+
+    .hero-info p {
+        font-size: 0.9rem;
+    }
+    
+    .btn-header {
+        align-self: center;
+    }
 }
