@@ -8,8 +8,10 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/hero.css">
     <link rel="stylesheet" href="css/cards.css">
+    <link rel="stylesheet" href="css/contact.css">
     <title>Monateri Motos</title>
     <script src="https://cdn.tailwindcss.com"></script>
 
@@ -46,7 +48,19 @@
 
     </section>
     <section id="contacto">
-
+            <form class="field" id="contactForm">
+                <label for="name">Nombre</label>
+                <input type="text" id="name" placeholder="Juan Pérez" required>
+                <label for="email">Email</label>
+                <input type="email" id="email" placeholder="ejemplo@email.com" required>
+                <label for="phone">Número de teléfono</label>
+                <input type="tel" id="phone" placeholder="+1 1234 567 890" required>
+                <label for="msg">Mensaje</label>
+                <textarea type="text" id="msg" placeholder="Quiero averiguar sobre..." required></textarea>
+                <input type="text" id="company" tabindex="-1" autocomplete="off" />
+                <button type="submit" id="submitBtn">Enviar mensaje</button>
+                <p id="formMessage"></p>
+            </form>
     </section>
     <footer>
         <div class="footer up"></div>
@@ -54,5 +68,6 @@
     </footer>
     <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
     <script src="js/cards.js"></script>
+    <script src="js/contact_form.js"></script>
 </body>
 </html>

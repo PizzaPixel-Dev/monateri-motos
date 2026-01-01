@@ -1,0 +1,55 @@
+.field {
+    margin: 20px;
+    padding: 20px;
+    background: #2d2d2d;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    color: #f2f2f2;
+    border-radius: 16px;
+    width: 50%;
+}
+
+.field input{
+    border-radius: 5px;
+    border: none;
+    height: 30px;
+    padding-left: 10px;
+    color: #2d2d2d;
+}
+
+.field textarea {
+    min-width: 100%;
+    resize: vertical;
+    min-height: 150px;
+    max-height: 150px;
+    box-sizing: border-box;
+    padding: 10px;
+    color: #2d2d2d;
+}
+
+.field button {
+    background-color: #fa2525;
+    width: 125px;
+    height: 40px;
+    border-radius: 8px;
+    margin: auto;
+}
+
+#submitBtn[disabled] {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+#formMessage {
+    margin-top: 12px;
+    font-weight: 500;
+}
+
+#formMessage.success {
+    color: #22c55e;
+}
+
+#formMessage.error {
+    color: #ef4444;
+}
