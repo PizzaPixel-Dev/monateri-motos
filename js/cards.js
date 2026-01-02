@@ -1,16 +1,12 @@
-(() => {
-const SUPABASE_URL = "https://tnbfqakvotmgqbrjhmus.supabase.co";
-const SUPABASE_KEY = "sb_publishable_Db5fiANKUMFWJIA3AhH5bQ_PgXZylG6";
-const motosTrack = document.getElementById("motosTrack");
-const supabase = window.supabase.createClient(
-    SUPABASE_URL,
-    SUPABASE_KEY
-);
-const prevBtn = document.querySelector(".carousel-btn.prev");
-const nextBtn = document.querySelector(".carousel-btn.next");
-let currentIndex = 0;
+export function initCatalog(supabase) {
+    renderMotos(supabase).then(() => {
+    document
+        .querySelectorAll(".motos-carousel-wrapper")
+        .forEach(initCarousel);
+});
+}
 
-async function getMotos() {
+async function getMotos(supabase) {
     const { data, error } = await supabase
     .from("motos")
     .select("*")
@@ -43,6 +39,24 @@ function createMotoCard(moto) {
         `;
 }
 
+async function renderMotos(supabase) {
+    const motos = await getMotos(supabase);
+    const motosNew = motos.filter(moto => moto.new === true);
+    const motosUsed = motos.filter(moto => moto.new === false);
+
+    const trackNew = document.getElementById("motosTrack");
+    const trackUsed = document.getElementById("motosTrackUsed");
+
+    trackNew.innerHTML = motosNew
+        .map(createMotoCard)
+        .join("");
+
+    trackUsed.innerHTML = motosUsed
+        .map(createMotoCard)
+        .join("");
+
+}
+
 function getStep() {
     const width = window.innerWidth;
 
@@ -51,60 +65,50 @@ function getStep() {
     return 1;
 }
 
-function updateCarousel() {
-    const card = document.querySelector(".moto-card");
-    if (!card) return;
+function initCarousel(wrapper) {
+    const track = wrapper.querySelector(".motosTrack");
+    const prevBtn = wrapper.querySelector(".carousel-btn.prev");
+    const nextBtn = wrapper.querySelector(".carousel-btn.next");
 
-    const cardWidth = card.offsetWidth + 24;
-    const translateX = -(currentIndex * cardWidth);
+    let currentIndex = 0;
 
-    motosTrack.style.transform = `translateX(${translateX}px)`;
-    updateArrows();
+    function update() {
+        const cards = track.querySelectorAll(".moto-card");
+
+        if (cards.length <= 1) {
+            prevBtn.classList.add("hidden");
+            nextBtn.classList.add("hidden");
+            return;
+        }
+
+        const cardWidth = cards[0].offsetWidth + 24;
+
+        track.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
+
+        prevBtn.classList.toggle("hidden", currentIndex === 0);
+        nextBtn.classList.toggle(
+            "hidden",
+            currentIndex >= cards.length - 1
+        );
+    }
+
+    nextBtn.addEventListener("click", () => {
+        currentIndex = Math.min(
+            currentIndex + getStep(),
+            track.children.length - 1
+        );
+        update();
+    });
+
+    prevBtn.addEventListener("click", () => {
+        currentIndex = Math.max(currentIndex - getStep(), 0);
+        update();
+    });
+
+    window.addEventListener("resize", () => {
+        currentIndex = 0;
+        update();
+    });
+
+    update();
 }
-
-nextBtn.addEventListener("click", () => {
-    const step = getStep();
-    const totalCards = document.querySelectorAll(".moto-card").length;
-
-    const maxIndex = totalCards - 1;
-
-    currentIndex = Math.min(currentIndex + step, maxIndex);
-    updateCarousel();
-});
-
-prevBtn.addEventListener("click", () => {
-    const step = getStep();
-    currentIndex = Math.max(currentIndex - step, 0);
-    updateCarousel();
-});
-
-window.addEventListener("resize", () => {
-    currentIndex = 0;
-    updateCarousel();
-});
-
-async function renderMotos() {
-    const motos = await getMotos();
-
-    motosTrack.innerHTML = motos
-        .map(moto => createMotoCard(moto))
-        .join("");
-    console.log(motos);
-    console.log(motosTrack);
-
-}
-
-function updateArrows() {
-    const totalCards = document.querySelectorAll(".moto-card").length;
-
-    prevBtn.classList.toggle("hidden", currentIndex === 0);
-    nextBtn.classList.toggle(
-        "hidden",
-        currentIndex >= totalCards - 1
-    );
-}
-
-
-renderMotos().then(() => {
-    updateArrows();});
-})();

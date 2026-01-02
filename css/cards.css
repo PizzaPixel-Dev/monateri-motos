@@ -1,3 +1,7 @@
+.catalog-container {
+    margin-top: 30px;
+}
+
 .catalog-text {
     justify-items: center;
     max-width: 50%;

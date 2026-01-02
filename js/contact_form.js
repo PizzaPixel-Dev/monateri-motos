@@ -1,13 +1,4 @@
-(() => {
-
-    const SUPABASE_URL = "https://tnbfqakvotmgqbrjhmus.supabase.co";
-    const SUPABASE_KEY = "sb_publishable_Db5fiANKUMFWJIA3AhH5bQ_PgXZylG6";
-
-    const supabase = window.supabase.createClient(
-        SUPABASE_URL,
-        SUPABASE_KEY
-    );
-
+export function initForm(supabase){
     const form = document.getElementById("contactForm");
     const button = document.getElementById("submitBtn");
     const messageBox = document.getElementById("formMessage");
@@ -97,4 +88,5 @@
         }, duration);
     }
 
-})();
+}
+
