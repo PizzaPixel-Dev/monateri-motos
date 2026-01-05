@@ -1,17 +1,96 @@
-#contacto {
+#contact {
     padding-top: 5px;
+    padding-bottom: 10px;
+    margin: 30px 60px;
+}
+
+#contact > h2,
+#contact > p {
+    text-align: center;
+} 
+
+.titleContactSection {
+    font-weight: 600;
+    font-size: 3rem;
+}
+
+#contact p{
+    font-size: 1.1rem;
+    color: #707680;
+    margin-bottom: 1.5rem;
+}
+
+.contact-container {
+    width: 100%;
+    display: grid;
+    gap: 3rem;
+    grid-template-columns: 1fr 1fr;
+}
+
+.info-contact {
+    display: grid;
+    gap: 1.5rem;
+}
+
+.cardInfo {
+    border-radius: 14px;
+    background: #dedede;
+    gap: calc(0.25rem * 6);
+    display: flex;
+    flex-direction: column;
+    border: solid 1px #d0d0d0;
+    min-height: 10.5rem;
+    padding: 0.5rem;
+}
+
+.cardHeader {
+    padding-inline: calc(0.25rem * 6);
+    height: 2rem;
+}
+
+.cardTitle {
+    margin-top: .50rem;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    gap: calc(0.25rem * 6);
+    height: 100%;
+    font-weight: 500;
+    font-size: 1.2rem;
+}
+
+.cardTitle svg {
+    width: 2rem;
+    fill: #fa2525;
+}
+
+.cardContent {
+    padding: 10px 10px;
+    
 }
 
 .field {
-    margin: 20px;
     padding: 20px;
-    background: #2d2d2d;
+    background: #dedede;
     display: flex;
     flex-direction: column;
     gap: 10px;
-    color: #f2f2f2;
+    color: #2b2b2b;
     border-radius: 16px;
-    width: 50%;
+}
+
+.field label {
+    font-weight: 500;
+    color: #2d2d2d;
+}
+
+.field h2 {
+    font-size: 2rem;
+    font-weight: 500;
+}
+
+.field p {
+    color: #2d2d2d;
 }
 
 .field input{
@@ -33,11 +112,14 @@
 }
 
 .field button {
+    padding-inline: .15rem;
+    color: #fafafa;
     background-color: #fa2525;
     width: 125px;
     height: 40px;
     border-radius: 8px;
     margin: auto;
+    font-size: .90rem;
 }
 
 .hp-field {
@@ -85,8 +167,18 @@
 }
 
 @media (max-width: 768px) {
+    .contact-container {
+        grid-template-columns: 1fr;
+    }
+
     .field {
         justify-self: center;
         width: 85%;
+    }
+}
+
+@media (max-width: 360px) {
+    #contact > h2 {
+        font-size: 2.5rem;
     }
 }
