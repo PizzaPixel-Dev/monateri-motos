@@ -1,0 +1,158 @@
+#points-program {
+    background: #1f1f1f;
+    color: #fafafa;
+    padding: 5rem 0;
+    border-color: #e0e0e0;
+    position: relative;
+    overflow: hidden;
+    font-family: "Work Sans", Arial, Helvetica, sans-serif;
+}
+
+.pp-bg {
+    position:absolute;
+    opacity: 0.05;
+    inset: 0;
+    pointer-events: none;
+}
+
+.dots {
+    width: 100%;
+    height: 100%;
+    background-image: radial-gradient(circle at 1px 1px, currentcolor 1px, transparent 0px);
+    background-size: 48px 48px;
+}
+
+.pp-container {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    z-index: 10;
+    position: relative;
+}
+
+.pp-grid {
+    display: grid;
+    gap: 3rem;
+    align-items: center;
+}
+
+.pp-info h2 {
+    font-size: 2.25rem;
+    line-height: 2.25rem;
+    font-weight: 500;
+    margin-bottom: 3rem;
+}
+
+.pp-info h2 span {
+    color: #e8171e;
+}
+
+.pp-info p {
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+    margin-bottom: 3rem;
+}
+
+.pp-info button {
+    transition-duration: 0.3s;
+    transition-property: all;
+    color: #e0e0e0;
+    font-weight: 600;
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+    background-color: #e8171e;
+    border-radius: .5rem;
+    height: 3.5rem;
+    margin-left: 20px;
+}
+
+.pp-info button:hover {
+    box-shadow: 0px 0px 30px #e8171e;
+    scale: 1.05;
+}
+
+.beneficts-grid {
+    display: grid;
+    gap: 1.5rem;
+}
+
+.pp-benefict {
+    animation-duration: 0.3s;
+    transition-duration: 0.3s;
+    padding: 1.5rem;
+    background: #232323;
+    border: solid 1px #fafafa1a;
+    border-radius: 0.75rem;
+}
+
+.pp-benefict:hover {
+    scale: 1.05;
+    background: #2b2b2b;
+    /*box-shadow: 0px 0px 30px #e8171e;*/
+}
+
+.pp-icon-benefict {
+    height: 3rem;
+    width: 3rem;
+    justify-items: center;
+    align-content: center;
+    background: #e8171e75;
+    border-radius: .5rem;
+    margin-bottom: 1rem;
+}
+
+.pp-icon-benefict svg{
+    fill: #e0e0e0;
+    width: 24px;
+    height: 24px;
+}
+
+.pp-benefict h3 {
+    font-weight: 600;
+}
+
+.pp-benefict p {
+    font-size: .75rem;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media (min-width: 1024px) {
+    .pp-grid {
+        grid-template-columns: repeat(2, minmax(0px, 1fr));
+    }
+
+    .pp-info h2 {
+        font-size: 3.75rem;
+        line-height: 1;
+    }
+}
+
+@media (min-width: 640px) {
+    .beneficts-grid {
+        grid-template-columns: repeat(2, minmax(0px, 1fr));
+    }
+}
