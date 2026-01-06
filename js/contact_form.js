@@ -15,6 +15,7 @@ export function initForm(supabase){
         button.textContent = "Enviando...";
 
         const name = document.getElementById("name").value;
+        const dni = document.getElementById("dni").value;
         const email = document.getElementById("email").value;
         const phone = document.getElementById("phone").value;
         const message = document.getElementById("msg").value;
@@ -32,7 +33,7 @@ export function initForm(supabase){
         try {
             const { error } = await supabase
             .from("leads")
-            .insert([{ name, email, phone, message }]);
+            .insert([{ name, dni, email, phone, message }]);
 
             if (error) throw error;
             leadSaved = true;
@@ -42,7 +43,7 @@ export function initForm(supabase){
                 {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({ name, email, phone, message })
+                    body: JSON.stringify({ name, dni, email, phone, message })
                 }
             );
 
@@ -53,7 +54,7 @@ export function initForm(supabase){
                 {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({ name, email, phone, message })
+                    body: JSON.stringify({ name, dni, email, phone, message })
                 }
             );
 
@@ -89,4 +90,3 @@ export function initForm(supabase){
     }
 
 }
-

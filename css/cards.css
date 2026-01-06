@@ -157,6 +157,27 @@
     color: #fa2525;
 }
 
+.footer-card {
+    display: flex;
+    justify-content: space-between;
+}
+
+.btn-consultar {
+    margin: 4px;
+    box-sizing: border-box;
+    background-color: #fa2525;
+    border: 1px solid #fa2525;
+    border-radius: 10px;
+    width: 100px;
+    height: 40px;
+    color: #fafafa;
+    transition: ease .3s;
+}
+
+.btn-consultar:hover {
+    box-shadow: 0 0px 10px #fa2525;
+}
+
 
 @media (max-width:768px) {
     .motos-carousel {

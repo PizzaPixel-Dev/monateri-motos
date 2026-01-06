@@ -3,6 +3,8 @@ export function initCatalog(supabase) {
     document
         .querySelectorAll(".motos-carousel-wrapper")
         .forEach(initCarousel);
+        
+    initConsultarButtons();
 });
 }
 
@@ -33,7 +35,10 @@ function createMotoCard(moto) {
             <h3>${moto.model}</h3>
             ${moto.year ? `<p class="moto-year">${moto.year}</p>` : ""}
             ${moto.motor ? `<p class="moto-motor">${moto.motor} cc.</p>` : ""}
-            <p class="moto-price">$${moto.price.toLocaleString()}</p>
+            <div class="footer-card">
+                <p class="moto-price">$${moto.price.toLocaleString()}</p>
+                <button class="btn-consultar" data-moto="${moto.brand} ${moto.model}">Consultar</button>
+            </div>
         </div>
         </article>
         `;
@@ -111,4 +116,21 @@ function initCarousel(wrapper) {
     });
 
     update();
+}
+
+function initConsultarButtons() {
+    const buttons = document.querySelectorAll(".btn-consultar");
+    const textarea = document.querySelector("#contact textarea");
+
+    buttons.forEach(btn => {
+        btn.addEventListener("click", () => {
+            const moto = btn.dataset.moto;
+            textarea.value = `¡Hola! 👋 Quisiera consultar por la disponibilidad y financiación de la ${moto}. Muchas gracias.`;
+        document
+            .getElementById("contact")
+            .scrollIntoView({ behavior: "smooth" });
+
+        textarea.focus();
+        });
+    });
 }
