@@ -36,8 +36,8 @@
 }
 
 .carousel-btn {
-    background: rgba(0,0,0,0.6);
-    color: #fff;
+    background: #fff;
+    fill: rgba(0,0,0,0.6);
     border: none;
     font-size: 2rem;
     width: 42px;
@@ -54,7 +54,7 @@
 }
 
 .carousel-btn:hover {
-    background: rgba(0,0,0,0.85);
+    fill: rgba(0,0,0,0.85);
 }
 
 .carousel-btn.prev {
